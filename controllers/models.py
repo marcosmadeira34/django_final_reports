@@ -1,0 +1,68 @@
+from django.db import models
+from django.contrib.auth.models import User
+
+# classe para o banco de dados
+
+class Database(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+                             null=True, default='',
+                             verbose_name='criado pelo usuário:')
+    
+    id = models.IntegerField(primary_key=True)
+    creatAt = models.DateTimeField(auto_now_add=True)
+    updatAt = models.DateTimeField(auto_now=True)
+    codigo_cliente = models.CharField(max_length=100, null=True, default='Não informado')
+    loja_cliente = models.CharField(max_length=100, null=True, default='Não informado')
+    nome_do_cliente = models.CharField(max_length=100, null=True, default='Não informado')
+    cnpj_do_cliente = models.CharField(max_length=100, null=True, default='Não informado')
+    cnpj_de_faturamento = models.CharField(max_length=100, null=True, default='Não informado')
+    cnpj_de_remessa = models.CharField(max_length=100, null=True, default='Não informado')
+    equipamento = models.CharField(max_length=100, null=True, default='Não informado')
+    nota_de_remessa = models.CharField(max_length=100, null=True, default='Não informado')
+    data_de_remessa = models.CharField(max_length=100, null=True, default='Não informado')
+    serie_da_nf_remessa = models.CharField(max_length=100, null=True, default='Não informado')
+    produto = models.CharField(max_length=100, null=True, default='Não informado')
+    descricao_do_produto = models.CharField(max_length=100, null=True, default='Não informado')
+    quantidade = models.IntegerField(null=True, default='Não informado')
+    pedido_remessa = models.CharField(max_length=100, null=True, default='Não informado')
+    projeto = models.CharField(max_length=100, null=True, default='Não informado')
+    obra = models.CharField(max_length=100, null=True, default='Não informado')
+    prazo_do_contrato = models.CharField(max_length=100, null=True, default='Não informado')
+    data_de_ativacao_legado = models.CharField(max_length=100, null=True, default='Não informado')
+    data_de_ativacao = models.CharField(max_length=100, null=True, default='Não informado')
+    ultimo_faturamento = models.CharField(max_length=100, null=True, default='Não informado')
+    data_do_termo = models.CharField(max_length=100, null=True, default='Não informado')
+    aniversario = models.CharField(max_length=100, null=True, default='Não informado')
+    desc_ajuste = models.CharField(max_length=100, null=True, default='Não informado')
+    indice_aplicado = models.CharField(max_length=100, null=True, default='Não informado')
+    dias_de_locacao = models.CharField(max_length=100, null=True, default='Não informado')
+    valor_de_origem = models.CharField(max_length=100, null=True, default='Não informado')
+    valor_unitario = models.CharField(max_length=100, null=True, default='Não informado')
+    valor_bruto = models.CharField(max_length=100, null=True, default='Não informado')
+    tipo_do_mes = models.CharField(max_length=100, null=True, default='Não informado')
+    contrato_legado = models.CharField(max_length=100, null=True, default='Não informado')
+    acrescimo = models.CharField(max_length=100, null=True, default='Não informado')
+    franquia = models.CharField(max_length=100, null=True, default='Não informado')
+    id_equipamento = models.CharField(max_length=100, null=True, default='Não informado')
+    id_equip_substituido = models.CharField(max_length=100, null=True, default='Não informado')
+    data_da_substituicao = models.CharField(max_length=100, null=True, default='Não informado')
+    data_proximo_faturamento = models.CharField(max_length=100, null=True, default='Não informado')
+    data_fim_locacao = models.CharField(max_length=100, null=True, default='Não informado')
+    tipo_de_servico = models.CharField(max_length=100, null=True, default='Não informado')
+    email = models.CharField(max_length=100, null=True, default='Não informado')
+    calculo_reajuste = models.CharField(max_length=100, null=True, default='Não informado')
+    nome_da_obra = models.CharField(max_length=100, null=True, default='Não informado')
+    numero_da_as = models.CharField(max_length=100, null=True, default='Não informado')
+    pedido_faturamento = models.CharField(max_length=100, null=True, default='Não informado')
+    nf_de_faturamento = models.CharField(max_length=100, null=True, default='Não informado')
+    serie_de_faturamento = models.CharField(max_length=100, null=True, default='Não informado')
+    data_de_faturamento = models.CharField(max_length=100, null=True, default='Não informado')
+    qtde_faturamento = models.IntegerField(null=True, default='Não informado')
+    vlr_unitario_faturamento = models.CharField(max_length=100, null=True, default='Não informado')
+    vlr_total_faturamento = models.CharField(max_length=100, null=True, default='Não informado')
+    periodo_de_faturamento = models.CharField(max_length=100, null=True, default='Não informado')
+    status_de_cobranca = models.CharField(max_length=100, null=True, default='Não informado')   
+
+    @property
+    def __str__(self):
+        return self.data_de_ativacao_legado.strftime('%d/%m/%Y')
