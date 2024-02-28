@@ -1,0 +1,358 @@
+{% load static %}
+
+<!doctype html>
+<html class="fixed sidebar-left-collapsed">
+	<head>
+
+		<!-- Basic -->
+		<meta charset="UTF-8">
+
+		<title>Incluir Novos Projetos</title>
+		<meta name="keywords" content="HTML5 Admin Template" />
+		<meta name="description" content="Porto Admin - Responsive HTML5 Template">
+		<meta name="author" content="okler.net">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<!-- Web Fonts  -->
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href='{% static "assets/vendor/bootstrap/css/bootstrap.css" %}'/>
+		<link rel="stylesheet" href='{% static "assets/vendor/font-awesome/css/font-awesome.css" %}'  />
+		<link rel="stylesheet" href='{% static "assets/vendor/magnific-popup/magnific-popup.css" %}'  />
+		<link rel="stylesheet" href='{% static "assets/vendor/bootstrap-datepicker/css/datepicker3.css" %}'  />
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href='{% static "assets/stylesheets/theme.css" %}' />
+
+		<!-- Skin CSS -->
+		<link rel="stylesheet" href='{% static "assets/stylesheets/skins/default.css" %}' />
+
+		<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href='{% static "assets/stylesheets/theme-custom.css" %}'/>
+
+		<!-- Head Libs -->
+		<script src='{% static "assets/vendor/modernizr/modernizr.js" %}'></script>
+
+	</head>
+	<body>
+		<section class="body">
+
+			<!-- start: header -->
+			<header class="header">
+				<div class="logo-container">
+					<a href="../" class="logo">
+						
+					</a>
+					<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+						<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+					</div>
+				</div>	 
+			</header>
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+				<!-- start: sidebar -->
+				<aside id="sidebar-left" class="sidebar-left">
+				
+					<div class="sidebar-header">
+						<div class="sidebar-title">
+							Menu
+						</div>
+						<div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+							<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+						</div>
+					</div>
+				
+					<div class="nano">
+						<div class="nano-content">
+							<nav id="menu" class="nav-main" role="navigation">
+								<ul class="nav nav-main">
+									<li class="nav-active">
+										<a href="{% url 'index' %}">
+											<i class="fa fa-home" aria-hidden="True"></i>
+											<span>Dashboard</span>
+										</a>
+									</li>
+
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-university" aria-hidden="true"></i>
+											<span>Carteira</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="{}">
+													 movimentação
+												</a>
+											</li>
+											<li>
+												<a href="{% url 'carteiraonline' %}">
+													 consultar carteira
+												</a>
+											</li>
+										</ul>
+									</li>	
+									
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-university" aria-hidden="true"></i>
+											<span>Consulta</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="{% url 'query' %}">
+													 Extrator
+												</a>
+											</li>
+											<li>
+												<a href="{% url 'carteiraonline' %}">
+													 Carteira On-line
+												</a>
+											</li>
+										</ul>
+									</li>																						
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-sign-out" aria-hidden="true"></i>
+											<span>Sair</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="{% url 'logout' %}">
+													 logout
+												</a>
+										</li>
+									</nav>						
+								</div>				
+							</div>				
+						</aside>
+				<!-- end: sidebar -->
+
+				<section role="main" class="content-body">
+					<header class="page-header">
+						<h2>Movimentação Carteira</h2>
+					
+						<div class="right-wrapper pull-right">
+							<ol class="breadcrumbs">
+								<li>
+									<a href="index.html">
+										<i class="fa fa-home"></i>
+									</a>
+								</li>
+								<li><span>Movimentação Carteira</span></li>
+								<li><span>Layouts</span></li>
+							</ol>
+					
+							<a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+						</div>
+					</header>
+
+					<!-- start: page -->
+					<div class="row">
+                        <div class="col-md-3"></div>
+						<div class="col-md-6">
+							<section class="panel">
+								<header class="panel-heading">
+									<div class="panel-actions">
+										<a href="#" class="fa fa-caret-down"></a>
+										<a href="#" class="fa fa-times"></a>
+									</div>
+
+									<h2 class="panel-title">Cadastrar Novos Projetos</h2>
+
+									<p class="panel-subtitle">
+										Inclua novos projetos na carteira
+									</p>
+								</header>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label class="control-label">Nome do Cliente</label>
+												<input type="text" name="firstname" class="form-control">
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label class="control-label">Projeto/Obra</label>
+												<input type="text" name="lastname" class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label class="control-label">Início de Faturamento</label>
+												<input type="email" name="email" class="form-control">
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label class="control-label">Limite Envio Relatório</label>
+												<input type="url" name="website" class="form-control">
+											</div>
+										</div>
+                                        <div class="col-sm-6">
+											<div class="form-group">
+												<label class="control-label">Data Limite para Faturar</label>
+												<input type="url" name="website" class="form-control">
+											</div>
+										</div>
+                                        <div class="col-sm-6">
+											<div class="form-group">
+												<label class="control-label">Prazo Faturamento Original</label>
+												<input type="url" name="website" class="form-control">
+											</div>
+										</div>
+                                        <div class="col-sm-6">
+											<div class="form-group">
+												<label class="control-label">Prazo - Dias Úteis</label>
+												<input type="url" name="website" class="form-control">
+											</div>
+										</div>
+                                        <div class="col-sm-6">
+											<div class="form-group">
+												<label class="control-label">Valor Previsto</label>
+												<input type="url" name="website" class="form-control">
+											</div>
+										</div>
+                                        <div class="col-sm-6">
+											<div class="form-group">
+												<label class="control-label">Faturamento Anterior</label>
+												<input type="url" name="website" class="form-control">
+											</div>
+										</div>
+                                        <div class="col-sm-6">
+											<div class="form-group">
+												<label class="control-label">Receita</label>
+												<input type="url" name="website" class="form-control">
+											</div>
+										</div>
+                                        <div class="col-sm-6">
+											<div class="form-group">
+												<label class="control-label">Status Faturamento</label>
+												<input type="url" name="website" class="form-control">
+											</div>
+										</div>
+                                        <div class="col-sm-6">
+											<div class="form-group">
+												<label class="control-label">Status Pedido</label>
+												<input type="url" name="website" class="form-control">
+											</div>
+										</div>
+                                        <div class="col-sm-6">
+											<div class="form-group">
+												<label class="control-label">Análise Pedido</label>
+												<input type="url" name="website" class="form-control">
+											</div>
+										</div>
+                                        <div class="col-sm-6">
+											<div class="form-group">
+												<label class="control-label">Valor Atual</label>
+												<input type="url" name="website" class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+								<footer class="panel-footer">
+									<button class="btn btn-primary">Cadastrar</button>
+								</footer>
+							</section>
+						</div>
+                	</div>
+					<!-- end: page -->
+				</section>
+			</div>
+
+			<aside id="sidebar-right" class="sidebar-right">
+				<div class="nano">
+					<div class="nano-content">
+						<a href="#" class="mobile-close visible-xs">
+							Collapse <i class="fa fa-chevron-right"></i>
+						</a>
+			
+						<div class="sidebar-right-wrapper">
+			
+							<div class="sidebar-widget widget-calendar">
+								<h6>Upcoming Tasks</h6>
+								<div data-plugin-datepicker data-plugin-skin="dark" ></div>
+			
+								<ul>
+									<li>
+										<time datetime="2014-04-19T00:00+00:00">04/19/2014</time>
+										<span>Company Meeting</span>
+									</li>
+								</ul>
+							</div>
+			
+							<div class="sidebar-widget widget-friends">
+								<h6>Friends</h6>
+								<ul>
+									<li class="status-online">
+										<figure class="profile-picture">
+											<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-online">
+										<figure class="profile-picture">
+											<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-offline">
+										<figure class="profile-picture">
+											<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-offline">
+										<figure class="profile-picture">
+											<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+			
+						</div>
+					</div>
+				</div>
+			</aside>
+		</section>
+
+		<!-- Vendor -->
+		<script src='{% static "assets/vendor/jquery/jquery.js" %}'></script>
+		<script src='{% static "assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js" %}'></script>
+		<script src='{% static "assets/vendor/bootstrap/js/bootstrap.js" %}'></script>
+		<script src='{% static "assets/vendor/nanoscroller/nanoscroller.js" %}'></script>
+		<script src='{% static "assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js" %}'></script>
+		<script src='{% static "assets/vendor/magnific-popup/magnific-popup.js" %}'></script>
+		<script src='{% static "assets/vendor/jquery-placeholder/jquery.placeholder.js" %}'></script>
+		
+		<!-- Theme Base, Components and Settings -->
+		<script src='{% static "assets/javascripts/theme.js" %}'></script>
+		
+		<!-- Theme Custom -->
+		<script src='{% static "assets/javascripts/theme.custom.js" %}'></script>
+		
+		<!-- Theme Initialization Files -->
+		<script src='{% static "assets/javascripts/theme.init.js" %}'></script>
+
+	</body>
+</html>

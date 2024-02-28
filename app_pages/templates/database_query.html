@@ -7,7 +7,7 @@
 		<!-- Basic -->
 		<meta charset="UTF-8">
 
-		<title>Dados inseridos no banco de dados</title>
+		<title>Extrator</title>
 		<meta name="keywords" content="HTML5 Admin Template" />
 		<meta name="description" content="Porto Admin - Responsive HTML5 Template">
 		<meta name="author" content="okler.net">
@@ -88,6 +88,25 @@
 											<span>Dashboard</span>
 										</a>
 									</li>
+
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-university" aria-hidden="true"></i>
+											<span>Carteira</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="{}">
+													 movimentação
+												</a>
+											</li>
+											<li>
+												<a href="{% url 'carteiraonline' %}">
+													 consultar carteira
+												</a>
+											</li>
+										</ul>
+									</li>	
 									
 									<li class="nav-parent">
 										<a>
@@ -101,7 +120,7 @@
 												</a>
 											</li>
 											<li>
-												<a href="{% url 'query' %}">
+												<a href="{% url 'carteiraonline' %}">
 													 Carteira On-line
 												</a>
 											</li>
@@ -126,7 +145,7 @@
 
 				<section role="main" class="content-body">
 					<header class="page-header">
-						<h2>Consultar Dados</h2>
+						<h2>Consultar Extrator</h2>
 					
 						<div class="right-wrapper pull-right">
 							<ol class="breadcrumbs">
@@ -153,7 +172,7 @@
 									<a href= "#" class="fa fa-times"></a>
 								</div>
 						
-								<h2 class="panel-title" >Dados inseridos</h2>
+								<h2 class="panel-title" >Dados extrator</h2>
 								<p class="panel-subtitle"></p>
 
 								

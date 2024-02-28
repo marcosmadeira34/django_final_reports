@@ -88,6 +88,25 @@
 											<span>Dashboard</span>
 										</a>
 									</li>
+
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-university" aria-hidden="true"></i>
+											<span>Carteira</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="{}">
+													 movimentação
+												</a>
+											</li>
+											<li>
+												<a href="{% url 'carteiraonline' %}">
+													 consultar carteira
+												</a>
+											</li>
+										</ul>
+									</li>	
 									
 									<li class="nav-parent">
 										<a>
@@ -101,7 +120,7 @@
 												</a>
 											</li>
 											<li>
-												<a href="{% url 'query' %}">
+												<a href="{% url 'carteiraonline' %}">
 													 Carteira On-line
 												</a>
 											</li>
@@ -126,7 +145,7 @@
 
 				<section role="main" class="content-body">
 					<header class="page-header">
-						<h2>Consultar Dados</h2>
+						<h2>Consultar Carteira</h2>
 					
 						<div class="right-wrapper pull-right">
 							<ol class="breadcrumbs">
@@ -153,7 +172,7 @@
 									<a href= "#" class="fa fa-times"></a>
 								</div>
 						
-								<h2 class="panel-title" >Dados inseridos</h2>
+								<h2 class="panel-title" >Carteira Online</h2>
 								<p class="panel-subtitle"></p>
 
 								
@@ -165,47 +184,45 @@
 										
 										<tr>
 											<!-- <th>Id</th> -->
-											<th>Cliente</th>
-											<th>Loja</th>
-											<th>CNPJ Cliente</th>
-											<th>CNPJ Fatura/</th>
 											<th>Projeto</th>
 											<th>Obra</th>
-											<th>ID Equip/</th>
-											<th>Descrição Produto</th>
-											<th>Dias Locação</th>
-											<th>Valor Unitário</th> 
-											<th>Valor Bruto</th>
-											<th>Valor Unit.Fatura/</th>
-											<th>Qtd</th>
-											<th>Vlr Total Fatura/</th>
-											<th>Índice</th>
-											<th>Contrato Legado</th> 
-											<th>Período Fatura/</th>
+											<th>Padronizado</th>
+											<th>Início Fat/</th>
+											<th>Limit_Envio_Rel</th>
+											<th>Dt_Limit_Fat</th>
+											<th>Prazo_Fat_Original</th>
+											<th>Prazo_Fat_Dias</th>
+											<th>Analista</th>
+											<th>Vlr_Previsto</th> 
+											<th>Fat_Anterior</th>
+											<th>Receita</th>
+											<th>Status_Fat</th>
+											<th>Status_Pedido</th>
+											<th>Análise_Pedido</th>
+											<th>Vlr_Atual</th> 
 										</tr>
 									</thead>
 									<tbody>
-									{% for transaction in database_data %}
+									{% for transaction in carteira_database_data %}
 										
 										<tr class="gradeX">
 											<!-- <td>{{ transaction.typeTransaction }}</td> -->
-											<td style="font-size: 11px;">{{ transaction.nome_do_cliente|default:" - " }}</td>
-											<td style="font-size: 11px; text-align: center;">{{ transaction.loja_cliente|default:" - " }}</td>
-											<td style="font-size: 11px; text-align: center;">{{ transaction.cnpj_do_cliente|default:" - "|stringformat:"s"  }}</td>
-											<td style="font-size: 11px; text-align: center;">{{ transaction.cnpj_de_faturamento|default:" - "|stringformat:"s" }}</td>
-											<td style="font-size: 11px; text-align: center;">{{ transaction.projeto|default:" - "|floatformat:0 }}</td>
-											<td style="font-size: 11px; text-align: center;">{{ transaction.obra|default:" - "|floatformat:0 }}</td>
-											<td style="font-size: 11px; text-align: center;">{{ transaction.id_equipamento|default:" - " }}</td>											
-											<td style="font-size: 11px; text-align: center;">{{ transaction.descricao_do_produto|default:" - " }}</td>
-											<td style="font-size: 11px; text-align: center;">{{ transaction.dias_de_locacao|default:" - "|floatformat:0 }}</td>
-											<td style="font-size: 11px; text-align: center;">{{ transaction.valor_unitario|default:" - " }}</td>
-											<td style="font-size: 11px; text-align: center;">{{ transaction.valor_bruto|default:" - " }}</td>
-											<td style="font-size: 11px; text-align: center;">{{ transaction.valor_unitario_fatura|default:" - " }}</td>
-											<td style="font-size: 11px; text-align: center;">{{ transaction.quantidade|default:" - "|floatformat:0 }}</td>
-											<td style="font-size: 11px; text-align: center;">{{ transaction.vlr_total_faturamento|default:" - " }}</td>
-											<td style="font-size: 11px; text-align: center;">{{ transaction.indice_aplicado|default:" - "|floatformat:0 }}</td>
-											<td style="font-size: 11px; text-align: center;">{{ transaction.contrato_legado|default:" - " }}</td>
-											<td style="font-size: 11px;">{{ transaction.periodo_de_faturamento|default:" - " }}</td>
+											<td style="font-size: 11px; text-align: center;">{{ transaction.projeto|default:" - "}}</td>
+											<td style="font-size: 11px; text-align: center;">{{ transaction.codigo_cliente|default:" - " }}</td>
+											<td style="font-size: 11px; text-align: center;">{{ transaction.padronizado|default:" - "|stringformat:"s"  }}</td>
+											<td style="font-size: 11px; text-align: center;">{{ transaction.inicio_de_faturamento|default:" - "|stringformat:"s" }}</td>
+											<td style="font-size: 11px; text-align: center;">{{ transaction.limite_para_enviar_relatorio|default:" - "|floatformat:0 }}</td>
+											<td style="font-size: 11px; text-align: center;">{{ transaction.data_limite_para_faturar|default:" - " }}</td>											
+											<td style="font-size: 11px; text-align: center;">{{ transaction.prazo_faturamento_original|default:" - " }}</td>
+											<td style="font-size: 11px; text-align: center;">{{ transaction.prazo_faturamento_dias_uteis|default:" - "|floatformat:0 }}</td>
+											<td style="font-size: 11px; text-align: center;">{{ transaction.analista|default:" - " }}</td>
+											<td style="font-size: 11px; text-align: center;">{{ transaction.valor_previsto|default:" - "|floatformat:2 }}</td>
+											<td style="font-size: 11px; text-align: center;">{{ transaction.faturamento_anterior|default:" - "|floatformat:2 }}</td>
+											<td style="font-size: 11px; text-align: center;">{{ transaction.receita|default:" - " }}</td>
+											<td style="font-size: 11px; text-align: center;">{{ transaction.status_do_faturamento|default:" - " }}</td>
+											<td style="font-size: 11px; text-align: center;">{{ transaction.status_pedido|default:" - " }}</td>
+											<td style="font-size: 11px; text-align: center;">{{ transaction.analise_pedido|default:" - " }}</td>
+											<td style="font-size: 11px; text-align: center;">{{ transaction.valor_atual|default:" - " }}</td>
 										</tr>
 										{% endfor %}																				
 									</tbody>
@@ -214,11 +231,6 @@
 						</section>
 						
 						
-						
-
-
-						
-
 			
 		<!-- Vendor -->
 		<script src='{% static "assets/vendor/jquery/jquery.js" %}'></script>
@@ -355,3 +367,11 @@
 		</script>
 	</body>
 </html>
+
+
+
+
+<!-- EXTRATOR = projeto, obra, cod_cliente, class faturamento, status pedido, valor bruto, valor total pedido, vlr total faturamento -->
+<!-- TB APOIO = analista, dt envio relatorio, dt limite faturamento, vlr anterior faturado, diferenca,  -->
+
+

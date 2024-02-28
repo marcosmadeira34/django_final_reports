@@ -77,7 +77,7 @@ def index(request):
 
     # porcentagem entre o valor total de faturamento e o valor já faturado
     # = valor a faturar / faturamento realizado
-    faturamento_orçado = float('30000000'.replace('.', '').replace(',', '.')) 
+    faturamento_orçado = float('90000000'.replace('.', '').replace(',', '.')) 
     porcento_a_faturar = (total_faturamento / faturamento_orçado) * 100 
 
     # formata a porcentagem para exibir no template
@@ -85,7 +85,7 @@ def index(request):
     
     # Remova o símbolo de porcentagem '%' do valor antes de passá-lo para o template
     porcento_a_faturar = porcento_a_faturar.replace('%', '') 
-    print(f'O valor de porcento_a_faturar é {porcento_a_faturar}')
+    
 
     # Calcula o valor total de receita de mau uso
     # Calcula o valor total de receita de mau uso
@@ -99,7 +99,7 @@ def index(request):
                             .isdigit()\
                             else 0 for item in mau_uso)
     total_mau_uso = "{:.2f}".format(total_mau_uso)
-    print(f'O valor de total_mau_uso é {total_mau_uso}')
+    
 
     # Calcula o valor total de receita de locacao
     locacao = Database.objects.filter(tipo_de_servico='Locacao').values('vlr_total_faturamento')
@@ -112,10 +112,7 @@ def index(request):
                             else 0 for item in locacao)
     total_locacao = "{:.2f}".format(total_locacao)
     
-    
-
-    print(f'O valor de total_locacao é {total_locacao}')
-
+ 
     # Passa o total_faturamento para o template
     return render(request, 'index.html', {
         'total_faturamento_formatado': total_faturamento_formatado,
@@ -144,10 +141,7 @@ def apply_filter(data, filter_criteria):
     return filtered_data
 
 
-
-
-
-@cache_page(60 * 15) # Cache 15 minutos
+@cache_page(60 * 1) # Cache 1 minuto
 def query_result(request):
     try:
         # Obtenha parâmetros de filtragem da solicitação GET
@@ -164,6 +158,7 @@ def query_result(request):
             else:
                 return render(request, 'database_query.html', cached_data)
         
+        # Obtenha os dados do banco de dados
         data = spark.read.format("jdbc")\
             .option("url", "jdbc:postgresql://localhost:5432/postgres")\
             .option("dbtable", "(SELECT * FROM pedidosfaturados ORDER BY creat_at DESC LIMIT 5000) as subquery")\
@@ -200,11 +195,65 @@ def query_result(request):
         logger.error(f"An error occurred: {str(e)}")
         # Trate o erro apropriadamente, como retornar uma resposta de erro ou página de erro
         return HttpResponseServerError("Internal Server Error")
-
-
     
 
 
 # função para a carteira online
-    """"""
+""" Aqui retorna as informações da carteira do analista de acordo com o seu login"""
+@cache_page(60 * 1) # Cache 1 minuto
+def carteiraonline_query_result(request):
+    try:
+        # Obtenha parâmetros de filtragem da solicitação GET
+        filter_criteria = request.GET.get('filter_criteria')
+        # Tente obter os dados comprimidos do cache
+        cached_data_compressed = cache.get('carteiraonline_cache_compressed')
 
+        if cached_data_compressed is not None:
+            cached_data = pickle.loads(gzip.decompress(cached_data_compressed))
+            # Se os dados estiverem no cache, aplique a filtragem se houver critérios
+            if filter_criteria:
+                filtered_data = apply_filter(cached_data, filter_criteria)
+                return render(request, 'carteiraonline.html', {'carteira_database_data': filtered_data})
+            else:
+                return render(request, 'carteiraonline.html', cached_data)
+        
+        data = spark.read.format("jdbc")\
+            .option("url", "jdbc:postgresql://localhost:5432/postgres")\
+            .option("dbtable", "(SELECT * FROM carteiraonline GROUP BY codigo_cliente, id ORDER BY MAX(creat_at) as subquery")\
+            .option("user", "postgres")\
+            .option("password", "123456789")\
+            .load()\
+            .select('projeto', 'codigo_cliente', 'padronizado', 'inicio_de_faturamento',
+                    'limite_para_enviar_relatorio', 'data_limite_para_faturar', 'prazo_faturamento_original',
+                    'prazo_faturamento_dias_uteis', 'analista', 'valor_previsto', 'faturamento_anterior',
+                    'receita', 'status_do_faturamento', 'status_pedido', 'analise_pedido', 'valor_atual'
+            )
+        
+        # limite de 1000 registros para evitar sobrecarga
+        #data = data.limit(2000)
+
+        # Converta os dados para uma lista de dicionários
+        data_list = [row.asDict() for row in data.collect()]
+
+        # Comprimi os dados
+        data_compressed = gzip.compress(pickle.dumps({'carteira_database_data': data_list}))
+
+        # Armazene os dados no cache 
+        cache.set('carteiraonline_cache_compressed', data_compressed, timeout=None)
+
+        # Aplique a filtragem se houver critérios
+        if filter_criteria:
+            filtered_data = apply_filter(data_list, filter_criteria)
+            return render(request, 'carteiraonline.html', {'carteira_database_data': filtered_data})
+        else:
+            return render(request, 'carteiraonline.html', {'carteira_database_data': data_list})
+    except Exception as e:
+        logger.error(f"An error occurred: {str(e)}")
+        # Trate o erro apropriadamente, como retornar uma resposta de erro ou página de erro
+        return HttpResponseServerError("Internal Server Error")
+
+
+
+""""Incluir novos projetos na carteira online"""
+def carteiraonline_incluir(request):
+    return render(request, 'carteiraonline_novos_projetos.html')

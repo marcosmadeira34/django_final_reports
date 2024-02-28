@@ -73,12 +73,32 @@ class Database(models.Model):
 
 # models para carteira online:
 class CarteiraModels:
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default='',
-                             verbose_name='criado pelo usuário:')
-    id = models.IntegerField(primary_key=True)
     creat_at = models.DateField(auto_now_add=True)
-    nome_do_cliente = models.CharField(null=True, default='-')
-    projeto = models.CharField(null=True, default='-')
-    obra = models.CharField(null=True, default='-')
-    contrato_legado = models.CharField(null=True, default='-')
-    periodo_de_faturamento = models.CharField(null=True, default='-')
+    projeto = models.CharField(null=False, default='-')
+    codigo_cliente = models.CharField(null=False, default='-')
+    padronizado = models.CharField(null=False, default='-')
+    inicio_de_faturamento = models.IntegerField(null=False, default='-')
+    limite_para_enviar_relatorio = models.IntegerField(null=False, default='-')
+    data_limite_para_faturar = models.IntegerField(null=False, default='-')
+    prazo_faturamento_original = models.DateField(null=False, default='-')
+    prazo_faturamento_dias_uteis = models.DateField(null=False, default='-')
+    analista = models.CharField(null=False, default='-')
+    valor_previsto = models.FloatField(null=False, default='-')
+    faturamento_anterior = models.FloatField(null=False, default='-')
+    receita = models.CharField(null=False, default='-')
+    status_do_faturamento = models.CharField(null=False, default='-')
+    status_pedido = models.CharField(null=False, default='-')
+    analise_pedido = models.CharField(null=False, default='-')
+    valor_atual = models.FloatField(null=False, default='-')
+
+
+
+
+    
+    class Meta:
+        db_table = 'carteiraonline'
+        managed = False
+
+
+
+    

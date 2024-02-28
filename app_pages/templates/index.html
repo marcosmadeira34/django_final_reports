@@ -111,6 +111,25 @@
 											<span>Dashboard</span>
 										</a>
 									</li>
+
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-university" aria-hidden="true"></i>
+											<span>Carteira</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="{}">
+													 movimentação
+												</a>
+											</li>
+											<li>
+												<a href="{% url 'carteiraonline' %}">
+													 consultar carteira
+												</a>
+											</li>
+										</ul>
+									</li>	
 									
 									<li class="nav-parent">
 										<a>
@@ -124,7 +143,7 @@
 												</a>
 											</li>
 											<li>
-												<a href="{% url 'query' %}">
+												<a href="{% url 'carteiraonline' %}">
 													 Carteira On-line
 												</a>
 											</li>
@@ -163,7 +182,7 @@
 							</ol>
 					
 							<a class="sidebar-right-toggle" ><i class="fa fa-chevron-left"></i></a>
-						</div>Realizado
+						</div>
 					</header>					
 
 					<!-- start: page -->
@@ -202,7 +221,7 @@
 											<div class="widget-summary">
 												<div class="widget-summary-col widget-summary-col-icon">
 													<div class="summary-icon bg-tertiary">
-														<i class="fa fa-download"></i>
+														<i class="fa fa-user"></i>
 													</div>
 												</div>
 												<div class="widget-summary-col">
@@ -229,7 +248,7 @@
 											<div class="widget-summary">
 												<div class="widget-summary-col widget-summary-col-icon">
 													<div class="summary-icon bg-secondary">
-														<i class="fa fa-arrow-down"></i>
+														<i class="fa fa-arrow-right"></i>
 													</div>
 												</div>
 												<div class="widget-summary-col">
@@ -253,7 +272,7 @@
 											<div class="widget-summary">
 												<div class="widget-summary-col widget-summary-col-icon">
 													<div class="summary-icon bg-quartenary">
-														<i class="fa fa-user"></i>
+														<i class="fa fa-shopping-cart"></i>
 													</div>
 												</div>
 												<div class="widget-summary-col">
@@ -371,7 +390,7 @@
 												</div>
 												<div class="liquid-meter-selector" id="meterSalesSel">
 													<a href="#" data-val="{{ porcento_a_faturar }}" class="active">Objetivo mês</a>
-													<a href="#" data-val="29">Objetivo Anual</a>
+													<a href="#" data-val="1">Objetivo Anual</a>
 												</div>
 											</div>
 										</div>
@@ -411,7 +430,7 @@
 														<div class="panel panel-accordion panel-accordion-first">
 															<div class="panel-heading">
 																<h4 class="panel-title">
-																	<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1One">
+																	<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#">
 																		<i class="fa fa-check"></i> Clientes para faturar
 																	</a>
 																</h4>
@@ -510,83 +529,77 @@
 									</div>
 
 								<!-- end: page -->
-			
-						
-
-			
-			
-
-			<aside id="sidebar-right" class="sidebar-right">
-				<div class="nano">
-					<div class="nano-content">
-						<a href="#" class="mobile-close visible-xs">
-							Collapse <i class="fa fa-chevron-right"></i>
-						</a>
-			
-						<div class="sidebar-right-wrapper">
-			
-							<div class="sidebar-widget widget-calendar">
-								<h6>Upcoming Tasks</h6>
-								<div data-plugin-datepicker data-plugin-skin="dark" ></div>
-			
-								<ul>
-									<li>
-										<time datetime="2014-04-19T00:00+00:00">04/19/2014</time>
-										<span>Company Meeting</span>
-									</li>
-								</ul>
-							</div>
-			
-							<div class="sidebar-widget widget-friends">
-								<h6>Friends</h6>
-								<ul>
-									<li class="status-online">
-										<figure class="profile-picture">
-											<img src='{% static "assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle" %}'>
-										</figure>
-										<div class="profile-info">
-											<span class="name">Joseph Doe Junior</span>
-											<span class="title">Hey, how are you?</span>
+								<aside id="sidebar-right" class="sidebar-right">
+									<div class="nano">
+										<div class="nano-content">
+											<a href="#" class="mobile-close visible-xs">
+												Collapse <i class="fa fa-chevron-right"></i>
+											</a>
+								
+											<div class="sidebar-right-wrapper">
+								
+												<div class="sidebar-widget widget-calendar">
+													<h6>Upcoming Tasks</h6>
+													<div data-plugin-datepicker data-plugin-skin="dark" ></div>
+								
+													<ul>
+														<li>
+															<time datetime="2014-04-19T00:00+00:00">04/19/2014</time>
+															<span>Company Meeting</span>
+														</li>
+													</ul>
+												</div>
+								
+												<div class="sidebar-widget widget-friends">
+													<h6>Friends</h6>
+													<ul>
+														<li class="status-online">
+															<figure class="profile-picture">
+																<img src='{% static "assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle" %}'>
+															</figure>
+															<div class="profile-info">
+																<span class="name">Joseph Doe Junior</span>
+																<span class="title">Hey, how are you?</span>
+															</div>
+														</li>
+														<li class="status-online">
+															<figure class="profile-picture">
+																<img src='{% static "assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle" %}'>
+															</figure>
+															<div class="profile-info">
+																<span class="name">Joseph Doe Junior</span>
+																<span class="title">Hey, how are you?</span>
+															</div>
+														</li>
+														<li class="status-offline">
+															<figure class="profile-picture">
+																<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+															</figure>
+															<div class="profile-info">
+																<span class="name">Joseph Doe Junior</span>
+																<span class="title">Hey, how are you?</span>
+															</div>
+														</li>
+														<li class="status-offline">
+															<figure class="profile-picture">
+																<img src='{% static "assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle" %}'>
+															</figure>
+															<div class="profile-info">
+																<span class="name">Joseph Doe Junior</span>
+																<span class="title">Hey, how are you?</span>
+															</div>
+														</li>
+													</ul>
+												</div>
+								
+											</div>
 										</div>
-									</li>
-									<li class="status-online">
-										<figure class="profile-picture">
-											<img src='{% static "assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle" %}'>
-										</figure>
-										<div class="profile-info">
-											<span class="name">Joseph Doe Junior</span>
-											<span class="title">Hey, how are you?</span>
-										</div>
-									</li>
-									<li class="status-offline">
-										<figure class="profile-picture">
-											<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
-										</figure>
-										<div class="profile-info">
-											<span class="name">Joseph Doe Junior</span>
-											<span class="title">Hey, how are you?</span>
-										</div>
-									</li>
-									<li class="status-offline">
-										<figure class="profile-picture">
-											<img src='{% static "assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle" %}'>
-										</figure>
-										<div class="profile-info">
-											<span class="name">Joseph Doe Junior</span>
-											<span class="title">Hey, how are you?</span>
-										</div>
-									</li>
-								</ul>
-							</div>
-			
-						</div>
-					</div>
-				</div>
-			</aside>
-		</section>
+									</div>
+								</aside>
+							</section>
 
 
-		<!-- Script para manipular a adição de itens à lista -->
+		<!-- Script para manipular a adição de itens à lista
 		<script>
 			document.addEventListener('DOMContentLoaded', function () {
 				var todoList = document.querySelector('.widget-todo-list');
@@ -619,7 +632,7 @@
 					}
 				});
 			});
-		</script>
+		</script> -->
 
 
 		<!-- Vendor -->
@@ -642,21 +655,21 @@
 		<script src='{% static "assets/vendor/flot/jquery.flot.pie.js" %}'></script>
 		<script src='{% static "assets/vendor/flot/jquery.flot.categories.js" %}'></script>
 		<script src='{% static "assets/vendor/flot/jquery.flot.resize.js" %}'></script>
-		<script src='{% static "assets/vendor/jquery-sparkline/jquery.sparkline.js" %}'></script>
+		<!-- <script src='{% static "assets/vendor/jquery-sparkline/jquery.sparkline.js" %}'></script> -->
 		<script src='{% static "assets/vendor/raphael/raphael.js" %}'></script>
 		<script src='{% static "assets/vendor/morris/morris.js" %}'></script>
-		<script src='{% static "assets/vendor/gauge/gauge.js" %}'></script>
+		<!-- <script src='{% static "assets/vendor/gauge/gauge.js" %}'></script> -->
 		<script src='{% static "assets/vendor/snap-svg/snap.svg.js" %}'></script>
 		<script src='{% static "assets/vendor/liquid-meter/liquid.meter.js" %}'></script>
 		<script src='{% static "assets/vendor/jqvmap/jquery.vmap.js" %}'></script>
 		<script src='{% static "assets/vendor/jqvmap/data/jquery.vmap.sampledata.js" %}'></script>
-		{% comment %} <script src='{% static "assets/vendor/jqvmap/maps/jquery.vmap.world.js" %}'></script>
-		<script src='{% static "assets/vendor/jqvmap/maps/continents/jquery.vmap.africa.js" %}'></script>
-		<script src='{% static "assets/vendor/jqvmap/maps/continents/jquery.vmap.asia.js" %}'></script>
+		<script src='{% static "assets/vendor/jqvmap/maps/jquery.vmap.world.js" %}'></script>
+		<!-- <script src='{% static "assets/vendor/jqvmap/maps/continents/jquery.vmap.africa.js" %}'></script> -->
+		<!-- <script src='{% static "assets/vendor/jqvmap/maps/continents/jquery.vmap.asia.js" %}'></script>
 		<script src='{% static "assets/vendor/jqvmap/maps/continents/jquery.vmap.australia.js" %}'></script>
 		<script src='{% static "assets/vendor/jqvmap/maps/continents/jquery.vmap.europe.js" %}'></script>
 		<script src='{% static "assets/vendor/jqvmap/maps/continents/jquery.vmap.north-america.js" %}'></script>
-		<script src='{% static "assets/vendor/jqvmap/maps/continents/jquery.vmap.south-america.js" %}'></script> {% endcomment %}
+		<script src='{% static "assets/vendor/jqvmap/maps/continents/jquery.vmap.south-america.js" %}'></script> -->
 		
 		<!-- Theme Base, Components and Settings -->
 		<script src='{% static "assets/javascripts/theme.js" %}'></script>
